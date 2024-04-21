@@ -3,6 +3,7 @@ import routersProduct from '../routes/product.route';
 import routesUser from '../routes/user.route';
 
 import { Product } from './product';
+import { User } from './user';
 
 class Servidor {
     private app: Application;
@@ -39,6 +40,7 @@ class Servidor {
     async dbConnect(){
         try{
             await Product.sync();
+            await User.sync();
             console.log('Connection has been established seccessfully.');
         }catch(error){
             console.log('Unable to connect to the database',error);

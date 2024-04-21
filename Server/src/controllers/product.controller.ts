@@ -1,12 +1,9 @@
 import {Request,Response}  from 'express';
+import { Product } from '../models/product';
 
 
 // Ruta
-export const getProducts = (req:Request,res:Response) => {
-    
-    res.json(
-        {
-            msg:'Get Products'
-        }
-    )
+export const getProducts = async (req:Request,res:Response) => {
+    const listProducts = await Product.findAll();   
+    res.json(listProducts)
 }

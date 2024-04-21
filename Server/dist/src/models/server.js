@@ -16,6 +16,7 @@ const express_1 = __importDefault(require("express"));
 const product_route_1 = __importDefault(require("../routes/product.route"));
 const user_route_1 = __importDefault(require("../routes/user.route"));
 const product_1 = require("./product");
+const user_1 = require("./user");
 class Servidor {
     constructor() {
         this.app = (0, express_1.default)();
@@ -42,6 +43,7 @@ class Servidor {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 yield product_1.Product.sync();
+                yield user_1.User.sync();
                 console.log('Connection has been established seccessfully.');
             }
             catch (error) {

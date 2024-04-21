@@ -16,4 +16,10 @@ export const Product = sequelize.define('product',{
     {
         type: DataTypes.STRING
     }
+},
+{
+    freezeTableName: true
 })
+
+//https://www.youtube.com/watch?v=XXMczd98pTY
+// Minuto 45

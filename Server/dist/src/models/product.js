@@ -21,5 +21,3 @@ exports.Product = connection_1.default.define('product', {
 }, {
     freezeTableName: true
 });
-//https://www.youtube.com/watch?v=XXMczd98pTY
-// Minuto 45

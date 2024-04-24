@@ -20,6 +20,3 @@ export const Product = sequelize.define('product',{
 {
     freezeTableName: true
 })
-
-//https://www.youtube.com/watch?v=XXMczd98pTY
-// Minuto 45

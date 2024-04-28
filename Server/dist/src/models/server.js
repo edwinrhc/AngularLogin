@@ -15,6 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const product_route_1 = __importDefault(require("../routes/product.route"));
 const user_route_1 = __importDefault(require("../routes/user.route"));
+const cors_1 = __importDefault(require("cors"));
 const product_1 = require("./product");
 const user_1 = require("./user");
 class Servidor {
@@ -37,7 +38,10 @@ class Servidor {
         this.app.use('/api/users', user_route_1.default);
     }
     middlewares() {
+        // Parseo Body
         this.app.use(express_1.default.json());
+        // Cors
+        this.app.use((0, cors_1.default)());
     }
     dbConnect() {
         return __awaiter(this, void 0, void 0, function* () {

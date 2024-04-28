@@ -1,6 +1,7 @@
 import express, {Application} from 'express';
 import routersProduct from '../routes/product.route';
 import routesUser from '../routes/user.route';
+import cors from 'cors';
 
 import { Product } from './product';
 import { User } from './user';
@@ -34,7 +35,10 @@ class Servidor {
 
 
     middlewares(){
+        // Parseo Body
         this.app.use(express.json());
+        // Cors
+        this.app.use(cors());
     }
 
     async dbConnect(){

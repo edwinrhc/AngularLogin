@@ -43,18 +43,28 @@ export class SigInComponent {
     }
 
     this.loading = true;
-    this._userService.signIn(user).subscribe(data => {
-      this.loading = false;
-     this.toaastr.success(`El usuario ${this.username} fue registrado con exito`,'Usuario Registrado');
-     this.router.navigate(['/login']);
-    }, (event : HttpErrorResponse) => {
-       this.loading = false;
-       if(event.error.msg){
-        this.toaastr.error(event.error.msg,'Error');
-       }else{
-         this.toaastr.error('Upps ocurrio un error, comuniquese con el administrador','Error');
-       }
+    this._userService.signIn(user).subscribe({
+      next: (v) => {
+        this.loading = false;
+        this.toaastr.success(`El usuario ${this.username} fue registrado con exito`,'Usuario Registrado');
+        this.router.navigate(['/login']);
+      },
+      error: (e: HttpErrorResponse) => {
+        this.loading = false;
+        this.msgError(e);
+      },
+      complete:()=>{
+        console.info('complete');
+      }
     })
+  }
+
+  msgError(e:HttpErrorResponse){
+    if(e.error.msg){
+      this.toaastr.error(e.error.msg,'Error');
+    } else {
+      this.toaastr.error('Upps ocurrio un error, comuniquese con el administrador','Error');
+    }
   }
 }
 
